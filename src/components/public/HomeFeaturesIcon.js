@@ -1,8 +1,8 @@
 import React from "react";
-import "../styles/main.css";
-import iconChat from "../images/iconChat.png";
-import iconMoney from "../images/iconMoney.png";
-import iconSecurity from "../images/iconSecurity.png";
+import "../../styles/main.css";
+import iconChat from "../../images/iconChat.png";
+import iconMoney from "../../images/iconMoney.png";
+import iconSecurity from "../../images/iconSecurity.png";
 
 export default function HomeFeaturesIcon() {
   // const data = {

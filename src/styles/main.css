@@ -21,8 +21,8 @@ body {
 
 .bg-dark {
   background-color: #12002b;
-  /* height: 75vh; */
   display: flex;
+  height: 75vh;
   align-items: center;
   justify-content: center;
 }
@@ -175,7 +175,7 @@ body {
   box-sizing: border-box;
   background-color: white;
   width: 300px;
-  margin: 0 auto;
+  margin: 0px auto;
   padding: 2rem;
 }
 
