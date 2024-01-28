@@ -6,7 +6,7 @@ export default function AdminNav() {
   return (
     <header>
       <nav className="main-nav">
-        <NavLink to="./" className="main-nav-logo">
+        <NavLink className="main-nav-logo" to="./">
           <img
             className="main-nav-logo-image"
             src={argentBankLogo}
@@ -15,9 +15,13 @@ export default function AdminNav() {
           <h1 className="sr-only">Argent Bank</h1>
         </NavLink>
         <div>
-          <NavLink to="/signIn" className="main-nav-item">
+          <NavLink className="main-nav-item" to="#">
             <i className="fa fa-user-circle"></i>
-            Signed Out
+            Tony
+          </NavLink>
+          <NavLink className="main-nav-item" to="./signIn">
+            <i className="fa fa-sign-out"></i>
+            Sign Out
           </NavLink>
         </div>
       </nav>
