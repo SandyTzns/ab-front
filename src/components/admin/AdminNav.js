@@ -19,7 +19,7 @@ export default function AdminNav() {
             <i className="fa fa-user-circle"></i>
             Tony
           </NavLink>
-          <NavLink className="main-nav-item" to="./signIn">
+          <NavLink className="main-nav-item" to="/./">
             <i className="fa fa-sign-out"></i>
             Sign Out
           </NavLink>
