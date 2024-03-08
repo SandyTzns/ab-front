@@ -33,9 +33,8 @@ export default function HomeFeaturesIcon() {
       <h2 className="sr-only">Features</h2>
       {data.map((feature) => {
         return (
-          <div className="feature-item">
+          <div key={feature.title} className="feature-item">
             <img
-              key={feature.title}
               src={feature.image}
               alt={feature.title}
               className="feature-icon"

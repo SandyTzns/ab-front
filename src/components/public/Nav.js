@@ -6,7 +6,7 @@ export default function Nav() {
   return (
     <header>
       <nav className="main-nav">
-        <NavLink to="./" className="main-nav-logo">
+        <NavLink to="/" className="main-nav-logo">
           <img
             className="main-nav-logo-image"
             src={argentBankLogo}
