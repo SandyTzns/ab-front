@@ -1,4 +1,7 @@
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addToken, addUser } from "../store/auth/auth-slice";
+// const dispatch = useDispatch();
 
 const BASE_URL = "http://localhost:3001/api/v1/user";
 
@@ -18,13 +21,18 @@ export default class apiCalls {
     }
   };
 
-  // when we first log into the db, we get a token
+  // when we first log into the db, we get a token, here we return the token so Login can store it using Dispatch
   static getToken = async (email, password) => {
     try {
-      let token = await axios.post(`${BASE_URL}/login`, { email, password });
-      console.log(token);
+      let tokenResponse = await axios.post(`${BASE_URL}/login`, {
+        email,
+        password,
+      });
+      console.log(tokenResponse.data.body.token);
+      return tokenResponse.data.body.token;
     } catch (error) {
       console.log(error);
+      return null;
     }
   };
 
