@@ -1,50 +1,38 @@
-import { useDispatch } from "react-redux";
-import axios from "axios";
+// import { useDispatch } from "react-redux";
+// import { addUser } from "../../store/auth/auth-slice";
+// const dispatch = useDispatch();
+// const BASE_URL = "http://localhost:3001/api/v1/user";
+// const email = formData.get("email");
+// const password = formData.get("password");
+
 import Nav from "../../components/public/Nav";
 import "../../styles/main.css";
-// import { addUser } from "../../store/auth/auth-slice";
+
+import apiCalls from "../../service/apiCalls";
+import { useState, useEffect } from "react";
 
 export default function Login() {
-  // const dispatch = useDispatch();
-  const BASE_URL = "http://localhost:3001/api/v1/user";
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [data, setData] = useState(null);
 
   async function submit(e) {
     e.preventDefault();
-    // see what FormData do
     const formData = new FormData(e.currentTarget);
-    const email = formData.get("email");
-    const password = formData.get("password");
-
-    // appel axios pour savoir si ce que j'ai récupéré se trouve dans la base de donnée, si oui renvoie un token
-    // difference entre appel API backend et database
-    // on récup le token puis on transforme le token pour recup les données
-    // async appel axios
-
-    let response;
-    try {
-      response = await axios.post(`${BASE_URL}/login`, { email, password });
-      console.log(response);
-
-      let config = {
-        headers: {
-          Authorization: `Bearer ${response.data.body.token}`,
-        },
-      };
-      let user = await axios.post(`${BASE_URL}/profile`, null, config);
-      console.log(user);
-      // let userEmail = user.data.body.email;
-      // let userFirstName = user.data.body.firstName;
-      // let userId = user.data.body.id;
-      // let userLastName = user.data.body.lastName;
-      console.log();
-    } catch (error) {
-      console.log(error);
-    }
-
-    // QUESTIONS : j'ai compris comment récuperer les données grâce au TOKEN, comment je les envoie à REDUX via Dispatch et qu'est -ce qu'il se passe après?
-
-    // dispatch(addUser(true, { userEmail, userFirstName, userId, userLastName }));
+    setEmail(formData.get("email"));
+    setPassword(formData.get("password"));
   }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await apiCalls.getToken(email, password);
+      if (!response) return alert("cannot get API");
+      setData(response.data);
+    };
+    fetchData();
+  }, [email, password]);
+
+  console.log(email, password);
 
   return (
     <>
@@ -74,7 +62,34 @@ export default function Login() {
             </button>
           </form>
         </section>
-      </div>{" "}
+      </div>
     </>
   );
 }
+
+// voir le code plus bas
+/** 
+ let response;
+    // retrieve TOKEN
+    try {
+      response = await axios.post(`${BASE_URL}/login`, { email, password });
+      console.log(response); // response with TOKEN
+
+      let config = {
+        headers: {
+          Authorization: `Bearer ${response.data.body.token}`,
+        },
+      };
+      // send TOKEN to get email, firstname, id, lastName
+      let user = await axios.post(`${BASE_URL}/profile`, null, config);
+      console.log(user);
+      console.log(user.data.body.email);
+      console.log(user.data.body.firstName);
+      console.log(user.data.body.id);
+      console.log(user.data.body.lastName);
+    } catch (error) {
+      console.log(error);
+    }
+    // dispatch(addUser(user));
+
+    */
