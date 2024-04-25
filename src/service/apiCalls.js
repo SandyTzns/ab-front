@@ -1,6 +1,5 @@
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { addToken, addUser } from "../store/auth/auth-slice";
+
 // const dispatch = useDispatch();
 
 const BASE_URL = "http://localhost:3001/api/v1/user";
