@@ -16,7 +16,7 @@ export default function Login() {
   async function submit(e) {
     e.preventDefault();
     try {
-      const token = await apiCalls.getToken(email, password);
+      const token = await apiCalls.login(email, password);
       if (!token) throw new Error("Failed to retrieve a token");
       dispatch(addToken(token));
     } catch (error) {

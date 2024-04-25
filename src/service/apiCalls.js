@@ -22,7 +22,7 @@ export default class apiCalls {
   };
 
   // when we first log into the db, we get a token, here we return the token so Login can store it using Dispatch
-  static getToken = async (email, password) => {
+  static login = async (email, password) => {
     try {
       let tokenResponse = await axios.post(`${BASE_URL}/login`, {
         email,
