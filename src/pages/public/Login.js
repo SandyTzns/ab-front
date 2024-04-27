@@ -3,7 +3,7 @@ import "../../styles/main.css";
 import apiCalls from "../../service/apiCalls";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addToken } from "../../store/auth/auth-slice";
+import { addToken, addUser } from "../../store/auth/auth-slice";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -19,10 +19,21 @@ export default function Login() {
     e.preventDefault();
 
     try {
+      // api calls
       const token = await apiCalls.login(email, password);
       if (!token) throw new Error("Failed to retrieve a token");
+
+      const user = await apiCalls.getUser(token);
+      console.log(user);
+
+      // dispatch to store
       dispatch(addToken(token));
+      dispatch(addUser(user));
+
+      //  enter the user page
       navigate("/signIn/user");
+
+      // catch the error if needed
     } catch (error) {
       console.error("Error logging in:", error);
       alert("Failed to log in. Please try again.");

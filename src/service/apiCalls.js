@@ -44,9 +44,11 @@ export default class apiCalls {
         },
       };
       let user = await axios.post(`${BASE_URL}/profile`, null, config);
-      console.log(user);
+      console.log(user.data.body);
+      return user.data.body;
     } catch (error) {
       console.log(error);
+      return null;
     }
   };
 

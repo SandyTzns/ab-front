@@ -18,7 +18,10 @@ export const authSlice = createSlice({
       currentSlice.token = "";
     },
     addUser: (currentSlice, action) => {
-      currentSlice.users.push(action.payload);
+      currentSlice.id = action.payload.id;
+      currentSlice.email = action.payload.email;
+      currentSlice.firstName = action.payload.firstName;
+      currentSlice.lastName = action.payload.lastName;
     },
   },
 });
