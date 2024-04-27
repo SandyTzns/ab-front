@@ -13,9 +13,7 @@ export const authSlice = createSlice({
   reducers: {
     addToken: (currentSlice, action) => {
       currentSlice.token = action.payload;
-    },
-    removeToken: (currentSlice) => {
-      currentSlice.token = "";
+      currentSlice.isLogged = true;
     },
     addUser: (currentSlice, action) => {
       currentSlice.id = action.payload.id;
@@ -23,8 +21,12 @@ export const authSlice = createSlice({
       currentSlice.firstName = action.payload.firstName;
       currentSlice.lastName = action.payload.lastName;
     },
+    removeToken: (currentSlice) => {
+      currentSlice.token = "";
+      currentSlice.isLogged = false;
+    },
   },
 });
 
-const { addUser, addToken, removeToken } = authSlice.actions;
-export { addUser, addToken, removeToken };
+const { addToken, addUser, removeToken } = authSlice.actions;
+export { addToken, addUser, removeToken };
