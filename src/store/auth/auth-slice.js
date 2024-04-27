@@ -14,11 +14,14 @@ export const authSlice = createSlice({
     addToken: (currentSlice, action) => {
       currentSlice.token = action.payload;
     },
+    removeToken: (currentSlice) => {
+      currentSlice.token = "";
+    },
     addUser: (currentSlice, action) => {
       currentSlice.users.push(action.payload);
     },
   },
 });
 
-const { addUser, addToken } = authSlice.actions;
-export { addUser, addToken };
+const { addUser, addToken, removeToken } = authSlice.actions;
+export { addUser, addToken, removeToken };
