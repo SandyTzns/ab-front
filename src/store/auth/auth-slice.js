@@ -21,12 +21,16 @@ export const authSlice = createSlice({
       currentSlice.firstName = action.payload.firstName;
       currentSlice.lastName = action.payload.lastName;
     },
-    removeToken: (currentSlice) => {
+    resetUser: (currentSlice) => {
       currentSlice.token = "";
       currentSlice.isLogged = false;
+      currentSlice.id = "";
+      currentSlice.email = "";
+      currentSlice.firstName = "";
+      currentSlice.lastName = "";
     },
   },
 });
 
-const { addToken, addUser, removeToken } = authSlice.actions;
-export { addToken, addUser, removeToken };
+const { addToken, addUser, resetUser } = authSlice.actions;
+export { addToken, addUser, resetUser };

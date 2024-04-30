@@ -2,13 +2,16 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import argentBankLogo from "../../images/argentBankLogo.png";
-import { removeToken } from "../../store/auth/auth-slice";
+import { useSelector } from "react-redux";
+import { resetUser } from "../../store/auth/auth-slice";
 
 export default function AdminNav() {
+  const firstName = useSelector((state) => state.AUTH.firstName);
+
   const dispatch = useDispatch();
   async function logOut(e) {
     e.preventDefault();
-    dispatch(removeToken());
+    dispatch(resetUser());
   }
 
   return (
@@ -25,7 +28,7 @@ export default function AdminNav() {
         <div>
           <NavLink className="main-nav-item" to="#">
             <i className="fa fa-user-circle"></i>
-            Tony
+            {firstName}
           </NavLink>
           <button type="submit" onClick={logOut}>
             <NavLink className="main-nav-item" to="/./">
