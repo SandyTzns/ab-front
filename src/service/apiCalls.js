@@ -53,7 +53,7 @@ export default class apiCalls {
   };
 
   //when we want to update the user
-  static updateUser = async (token, firstName, lastName) => {
+  static updateUser = async (token, newFirstName, newLastName) => {
     try {
       let config = {
         headers: {
@@ -62,7 +62,7 @@ export default class apiCalls {
       };
       let user = await axios.put(
         `${BASE_URL}/profile`,
-        { firstName, lastName },
+        { firstName: newFirstName, lastName: newLastName },
         config
       );
       console.log(user);

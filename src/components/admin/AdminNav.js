@@ -1,17 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import argentBankLogo from "../../images/argentBankLogo.png";
-import { useSelector } from "react-redux";
-import { resetUser } from "../../store/auth/auth-slice";
+import { logout } from "../../store/auth/auth-slice";
 
 export default function AdminNav() {
   const firstName = useSelector((state) => state.AUTH.firstName);
-
+  // const newFirstName = useSelector((state) => state.AUTH.newFirstName);
+  // const isUpdatedMode = useSelector((state) => state.AUTH.isUpdatedMode);
   const dispatch = useDispatch();
+
   async function logOut(e) {
     e.preventDefault();
-    dispatch(resetUser());
+    dispatch(logout());
   }
 
   return (

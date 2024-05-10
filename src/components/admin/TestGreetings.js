@@ -4,13 +4,15 @@ import { useState } from "react";
 import apiCalls from "../../service/apiCalls";
 import { resetUser, updateUser } from "../../store/auth/auth-slice";
 
-export default function Greetings() {
+export default function TestGreetings() {
   const firstName = useSelector((state) => state.AUTH.firstName);
   const lastName = useSelector((state) => state.AUTH.lastName);
   const token = useSelector((state) => state.AUTH.token);
-  const isUpdatedMode = useSelector((state) => state.AUTH.isUpdatedMode);
 
   const [editMode, setEditMode] = useState(false);
+
+  // const newFirstName = useSelector((state) => state.AUTH.newFirstName);
+  // const newLastName = useSelector((state) => state.AUTH.newLastName);
   const [newFirstName, setNewFirstName] = useState("");
   const [newLastName, setNewLastName] = useState("");
   const dispatch = useDispatch();
@@ -45,12 +47,22 @@ export default function Greetings() {
               className="editMode_input"
               value={newFirstName}
               onChange={(e) => setNewFirstName(e.target.value)}
+              // onChange={(e) =>
+              //   dispatch(
+              //     updateUser({ newFirstName: e.target.value, newLastName })
+              //   )
+              // }
             />
             <input
               type="text"
               className="editMode_input"
               value={newLastName}
               onChange={(e) => setNewLastName(e.target.value)}
+              // onChange={(e) =>
+              //   dispatch(
+              //     updateUser({ newFirstName, newLastName: e.target.value })
+              //   )
+              // }
             />
           </h1>
 
@@ -63,10 +75,7 @@ export default function Greetings() {
           <h1>
             Welcome back
             <br />
-            {isUpdatedMode
-              ? `${newFirstName} ${newLastName}`
-              : `${firstName} ${lastName}`}
-            !
+            {firstName} {lastName} !
           </h1>
           <button onClick={EditMode} className="edit-button">
             Edit Name

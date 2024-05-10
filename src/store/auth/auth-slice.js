@@ -9,6 +9,9 @@ export const authSlice = createSlice({
     email: "",
     firstName: "",
     lastName: "",
+    newFirstName: "",
+    newLastName: "",
+    isUpdatedMode: false,
   },
   reducers: {
     addToken: (currentSlice, action) => {
@@ -22,15 +25,22 @@ export const authSlice = createSlice({
       currentSlice.lastName = action.payload.lastName;
     },
     resetUser: (currentSlice) => {
-      currentSlice.token = "";
-      currentSlice.isLogged = false;
       currentSlice.id = "";
       currentSlice.email = "";
       currentSlice.firstName = "";
       currentSlice.lastName = "";
     },
+    updateUser: (currentSlice, action) => {
+      currentSlice.firstName = action.payload.newFirstName;
+      currentSlice.lastName = action.payload.newLastName;
+      currentSlice.isUpdatedMode = true;
+    },
+    logout: (currentSlice) => {
+      currentSlice.token = "";
+      currentSlice.isLogged = false;
+    },
   },
 });
 
-const { addToken, addUser, resetUser } = authSlice.actions;
-export { addToken, addUser, resetUser };
+const { addToken, addUser, resetUser, updateUser, logout } = authSlice.actions;
+export { addToken, addUser, resetUser, updateUser, logout };
