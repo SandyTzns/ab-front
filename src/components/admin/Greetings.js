@@ -25,9 +25,7 @@ export default function Greetings() {
     try {
       dispatch(updateUser({ newFirstName, newLastName }));
       setEditMode(false);
-
       await apiCalls.updateUser(token, newFirstName, newLastName);
-      // dispatch(resetUser());
     } catch (error) {
       console.error("Error updating first name:", error);
     }

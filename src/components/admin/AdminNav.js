@@ -6,8 +6,6 @@ import { logout } from "../../store/auth/auth-slice";
 
 export default function AdminNav() {
   const firstName = useSelector((state) => state.AUTH.firstName);
-  // const newFirstName = useSelector((state) => state.AUTH.newFirstName);
-  // const isUpdatedMode = useSelector((state) => state.AUTH.isUpdatedMode);
   const dispatch = useDispatch();
 
   async function logOut(e) {
