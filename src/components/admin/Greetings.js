@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import apiCalls from "../../service/apiCalls";
-import { resetUser, updateUser } from "../../store/auth/auth-slice";
+import { updateUser } from "../../store/auth/auth-slice";
 
 export default function Greetings() {
   const firstName = useSelector((state) => state.AUTH.firstName);
@@ -27,7 +27,7 @@ export default function Greetings() {
       setEditMode(false);
 
       await apiCalls.updateUser(token, newFirstName, newLastName);
-      dispatch(resetUser());
+      // dispatch(resetUser());
     } catch (error) {
       console.error("Error updating first name:", error);
     }

@@ -38,6 +38,9 @@ export const authSlice = createSlice({
     logout: (currentSlice) => {
       currentSlice.token = "";
       currentSlice.isLogged = false;
+      currentSlice.firstName = "";
+      currentSlice.lastName = "";
+      currentSlice.isUpdatedMode = false;
     },
   },
 });
