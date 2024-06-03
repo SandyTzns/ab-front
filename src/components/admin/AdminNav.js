@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import argentBankLogo from "../../images/argentBankLogo.png";
 import { logout } from "../../store/auth/auth-slice";
@@ -7,10 +7,12 @@ import { logout } from "../../store/auth/auth-slice";
 export default function AdminNav() {
   const firstName = useSelector((state) => state.AUTH.firstName);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   async function logOut(e) {
     e.preventDefault();
     dispatch(logout());
+    navigate("/./");
   }
 
   return (
@@ -29,12 +31,10 @@ export default function AdminNav() {
             <i className="fa fa-user-circle"></i>
             {firstName}
           </NavLink>
-          <button type="submit" onClick={logOut}>
-            <NavLink className="main-nav-item" to="/./">
-              <i className="fa fa-sign-out"></i>
-              Sign Out
-            </NavLink>
-          </button>
+          <NavLink className="main-nav-item" to="/./" onClick={logOut}>
+            <i className="fa fa-sign-out"></i>
+            Sign Out
+          </NavLink>
         </div>
       </nav>
     </header>
