@@ -24,14 +24,13 @@ export default function Login() {
       if (!token) throw new Error("Failed to retrieve a token");
 
       const user = await apiCalls.getUser(token);
-      console.log(user);
 
       // dispatch to store
       dispatch(addToken(token));
       dispatch(addUser(user));
 
       //  enter the user page
-      navigate("/signIn/user");
+      navigate("/login/profile");
 
       // catch the error if needed
     } catch (error) {
