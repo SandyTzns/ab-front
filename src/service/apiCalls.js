@@ -1,7 +1,5 @@
 import axios from "axios";
 
-// const dispatch = useDispatch();
-
 const BASE_URL = "http://localhost:3001/api/v1/user";
 
 export default class apiCalls {
@@ -29,7 +27,7 @@ export default class apiCalls {
       return tokenResponse.data.body.token;
     } catch (error) {
       console.log(error);
-      return null;
+      throw error;
     }
   };
 

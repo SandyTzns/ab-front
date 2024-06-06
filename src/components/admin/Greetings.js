@@ -16,13 +16,31 @@ export default function Greetings() {
   const dispatch = useDispatch();
 
   const EditMode = () => {
+    if (!editMode) {
+      setNewFirstName("");
+      setNewLastName("");
+    }
+
+    if (!newFirstName) {
+      setNewFirstName(firstName);
+    }
+    if (!newLastName) {
+      setNewLastName(lastName);
+    }
+
     setEditMode(true);
-    setNewFirstName("");
-    setNewLastName("");
   };
 
   const handleSaveBtn = async () => {
     try {
+      // Check if both new first name and last name are empty
+      if (!newFirstName && !newLastName) {
+        // If both are empty, exit edit mode and return
+        setNewFirstName(firstName);
+        setNewLastName(lastName);
+        setEditMode(false);
+        return;
+      }
       dispatch(updateUser({ newFirstName, newLastName }));
       setEditMode(false);
       await apiCalls.updateUser(token, newFirstName, newLastName);
@@ -41,12 +59,14 @@ export default function Greetings() {
             <input
               type="text"
               className="editMode_input"
+              placeholder={firstName}
               value={newFirstName}
               onChange={(e) => setNewFirstName(e.target.value)}
             />
             <input
               type="text"
               className="editMode_input"
+              placeholder={lastName}
               value={newLastName}
               onChange={(e) => setNewLastName(e.target.value)}
             />

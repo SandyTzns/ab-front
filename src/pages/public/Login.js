@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -35,7 +36,8 @@ export default function Login() {
       // catch the error if needed
     } catch (error) {
       console.error("Error logging in:", error);
-      alert("Failed to log in. Please try again.");
+      setLoginError(true);
+      // alert("Failed to log in. Please try again.");
     }
   }
 
@@ -71,6 +73,9 @@ export default function Login() {
               <input type="checkbox" id="remember-me" />
               <label>Remember me</label>
             </div>
+            {loginError && (
+              <p className="error-message">Invalid email or password</p>
+            )}
 
             <button type="submit" className="sign-in-button">
               Sign In
