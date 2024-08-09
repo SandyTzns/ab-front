@@ -10,7 +10,9 @@ Argent Bank est une application web développée avec React et Redux. Cette appl
 - **Swagger** : Utilisé pour documenter les endpoints de l'API et les interactions.
 
 ## Installation
+
 Pour installer et exécuter ce projet localement, suivez les étapes ci-dessous :
+
 Clonez le dépôt :
 
 ```bash
