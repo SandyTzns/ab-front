@@ -1,5 +1,7 @@
 # Argent Bank
 
+![argent bank 2](https://github.com/user-attachments/assets/25983ec4-476b-4377-9b53-1354c15d7bdd)
+
 Argent Bank est une application web développée avec React et Redux. Cette application permet aux utilisateurs de gérer leurs comptes bancaires et leurs profils de manière sécurisée et responsive. Le projet se divise en deux phases principales : l'authentification des utilisateurs et la gestion des transactions.
 
 ## Technologies Utilisées
@@ -25,10 +27,6 @@ Installez les dépendances :
 ```bash
  npm install
 ```
-![argent bank 2](https://github.com/user-attachments/assets/25983ec4-476b-4377-9b53-1354c15d7bdd)
-
-
-
 
 Démarrez l'application :
 
