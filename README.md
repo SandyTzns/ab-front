@@ -25,6 +25,10 @@ Installez les dépendances :
 ```bash
  npm install
 ```
+![argent bank 2](https://github.com/user-attachments/assets/25983ec4-476b-4377-9b53-1354c15d7bdd)
+
+
+
 
 Démarrez l'application :
 
